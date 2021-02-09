@@ -1,0 +1,11 @@
+---
+- name: Create a mysql database for drupal
+  mysql_db: "db={{ domain }} state=present"
+
+- name: Create a mysql user for drupal.
+  mysql_user:
+    name: "{{ domain }}"
+    password: "1234"
+    priv: "{{ domain }}.*:ALL"
+    host: localhost
+    state: present
